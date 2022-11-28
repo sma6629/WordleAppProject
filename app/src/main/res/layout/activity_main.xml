@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cardview_dark_background"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Wordle"
+        android:textSize="50dp"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-black"
+        android:textColor="@color/white"
+        android:layout_centerHorizontal="true"
+        />
+
+    <EditText
+        android:layout_width="338dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/edit_text_background"
+        android:hint="border text field"
+        android:textSize="35dp"
+        android:id="@+id/editBox"
+        android:visibility="visible"
+        />
+
+    <TextView
+        android:id="@+id/firstChar"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:layout_marginLeft="80dp"
+        android:text="G"
+        android:textSize="45dp"
+        android:textAlignment="center"
+        android:textColor="#00ff00"
+        android:visibility="invisible"
+        />
+
+    <TextView
+        android:id="@+id/secondChar"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:layout_toRightOf="@id/firstChar"
+        android:text="G"
+        android:textSize="45dp"
+        android:textAlignment="center"
+        android:textColor="#00ff00"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/thirdChar"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/secondChar"
+        android:layout_marginTop="150dp"
+        android:text="G"
+        android:textSize="45dp"
+        android:textAlignment="center"
+        android:textColor="#00ff00"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/fourthChar"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/thirdChar"
+        android:layout_marginTop="150dp"
+        android:text="G"
+        android:textSize="45dp"
+        android:textAlignment="center"
+        android:textColor="#00ff00"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/fifthChar"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/fourthChar"
+        android:layout_marginTop="150dp"
+        android:text="G"
+        android:textSize="45dp"
+        android:textAlignment="center"
+        android:textColor="#00ff00"
+        android:visibility="invisible" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/enterBtn"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="Enter"
+        android:textSize="30dp"
+        />
+
+</RelativeLayout>
