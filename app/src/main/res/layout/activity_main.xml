@@ -25,7 +25,10 @@
         android:layout_marginTop="150dp"
         android:layout_centerHorizontal="true"
         android:background="@drawable/edit_text_background"
-        android:hint="border text field"
+        android:hint="@string/border_text_field"
+        android:inputType="text"
+        android:imeOptions="actionDone"
+        android:imeActionLabel="@string/border_text_field"
         android:textSize="35dp"
         android:id="@+id/editBox"
         android:visibility="visible"
@@ -36,6 +39,7 @@
         android:layout_width="45dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
+        android:layout_alignParentTop="true"
         android:layout_marginLeft="80dp"
         android:text="G"
         android:textSize="45dp"
@@ -92,14 +96,5 @@
         android:textColor="#00ff00"
         android:visibility="invisible" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/enterBtn"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="Enter"
-        android:textSize="30dp"
-        />
 
 </RelativeLayout>
