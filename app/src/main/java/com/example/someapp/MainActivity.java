@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -25,7 +27,9 @@ import java.nio.Buffer;
 import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class MainActivity extends AppCompatActivity implements TextView.OnEditorActionListener {
@@ -37,69 +41,200 @@ public class MainActivity extends AppCompatActivity implements TextView.OnEditor
     private TextView fourthChar;
     private TextView fifthChar;
 
-    private static List<String> wordsList = new ArrayList<>(
+    private EditText editBox2;
+    private TextView firstChar2;
+    private TextView secondChar2;
+    private TextView thirdChar2;
+    private TextView fourthChar2;
+    private TextView fifthChar2;
+
+    private EditText editBox3;
+    private TextView firstChar3;
+    private TextView secondChar3;
+    private TextView thirdChar3;
+    private TextView fourthChar3;
+    private TextView fifthChar3;
+
+    private EditText editBox4;
+    private TextView firstChar4;
+    private TextView secondChar4;
+    private TextView thirdChar4;
+    private TextView fourthChar4;
+    private TextView fifthChar4;
+
+    private EditText editBox5;
+    private TextView firstChar5;
+    private TextView secondChar5;
+    private TextView thirdChar5;
+    private TextView fourthChar5;
+    private TextView fifthChar5;
+
+    static List<String> wordsList = new ArrayList<>(
     List.of("aback", "abase", "abate", "abbey", "abbot", "abhor",
             "abide", "abled", "abode", "abort", "about", "above",
             "abuse", "abyss",
             "acorn", "acrid", "actor", "acute",
             "adage", "adapt", "adept", "admin", "admit", "adobe", "adopt", "adore"));
 
+    static String word;
+    static int onLine;
+    static final int LAST_LINE = 2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        word = getRandomWord();
+        onLine = 0;
+
         editBox = findViewById(R.id.editBox);
-        editBox.setTop(600);
         editBox.setOnEditorActionListener(this);
-        editBox.setImeActionLabel("ENTER", KeyEvent.KEYCODE_ENTER);
 
         firstChar = findViewById(R.id.firstChar);
         secondChar = findViewById(R.id.secondChar);
         thirdChar = findViewById(R.id.thirdChar);
         fourthChar = findViewById(R.id.fourthChar);
         fifthChar = findViewById(R.id.fifthChar);
+
+        editBox2 = findViewById(R.id.editBox2);
+        editBox2.setOnEditorActionListener(this);
+
+        firstChar2 = findViewById(R.id.firstChar2);
+        secondChar2 = findViewById(R.id.secondChar2);
+        thirdChar2 = findViewById(R.id.thirdChar2);
+        fourthChar2 = findViewById(R.id.fourthChar2);
+        fifthChar2 = findViewById(R.id.fifthChar2);
+
+        editBox3 = findViewById(R.id.editBox3);
+        editBox3.setOnEditorActionListener(this);
+
+        firstChar3 = findViewById(R.id.firstChar3);
+        secondChar3 = findViewById(R.id.secondChar3);
+        thirdChar3 = findViewById(R.id.thirdChar3);
+        fourthChar3 = findViewById(R.id.fourthChar3);
+        fifthChar3 = findViewById(R.id.fifthChar3);
+
+
+        editBox4 = findViewById(R.id.editBox4);
+        editBox4.setOnEditorActionListener(this);
+        firstChar4 = findViewById(R.id.firstChar4);
+        secondChar4 = findViewById(R.id.secondChar4);
+        thirdChar4 = findViewById(R.id.thirdChar4);
+        fourthChar4 = findViewById(R.id.fourthChar4);
+        fifthChar4 = findViewById(R.id.fifthChar4);
+
+
+        editBox5 = findViewById(R.id.editBox5);
+        editBox5.setOnEditorActionListener(this);
+        firstChar5 = findViewById(R.id.firstChar5);
+        secondChar5 = findViewById(R.id.secondChar5);
+        thirdChar5 = findViewById(R.id.thirdChar5);
+        fourthChar5 = findViewById(R.id.fourthChar5);
+        fifthChar5 = findViewById(R.id.fifthChar5);
     }
 
-    public String getRandomWord(){
+    public static String getRandomWord(){
         return wordsList.get((int)(Math.random()*(wordsList.size()-1)));
     }
 
-    public TextView getChar(int num){
-        if (num == 0) return firstChar;
-        else if (num == 1) return secondChar;
-        else if (num == 2) return thirdChar;
-        else if (num == 3) return fourthChar;
-        else return fifthChar;
+    public TextView getChar(int line, int num){
+        if(line == 0) {
+            if (num == 0) return firstChar;
+            else if (num == 1) return secondChar;
+            else if (num == 2) return thirdChar;
+            else if (num == 3) return fourthChar;
+            else return fifthChar;
+        } else if (line == 1){
+            if (num == 0) return firstChar2;
+            else if (num == 1) return secondChar2;
+            else if (num == 2) return thirdChar2;
+            else if (num == 3) return fourthChar2;
+            else return fifthChar2;
+        }
+        else if (line == 2){
+            if (num == 0) return firstChar3;
+            else if (num == 1) return secondChar3;
+            else if (num == 2) return thirdChar3;
+            else if (num == 3) return fourthChar3;
+            else return fifthChar3;
+        }
+
+        else if (line == 3){
+            if (num == 0) return firstChar4;
+            else if (num == 1) return secondChar4;
+            else if (num == 2) return thirdChar4;
+            else if (num == 3) return fourthChar4;
+            else return fifthChar4;
+        }
+
+        else {
+            if (num == 0) return firstChar5;
+            else if (num == 1) return secondChar5;
+            else if (num == 2) return thirdChar5;
+            else if (num == 3) return fourthChar5;
+            else return fifthChar5;
+        }
+
     }
 
-    public void checkWord(String word){
-        String text = ""+editBox.getText();
-        if (text.length() == 5 && wordsList.contains(text)) {
-            System.out.println(word);
+    public EditText getEditBox(int line){
+        if(line == 0) return editBox;
+        else if (line == 1) return editBox2;
+        else if (line == 2) return editBox3;
+        else if (line == 3 ) return editBox4;
+        else return editBox5;
+    }
 
+    public boolean isValid(String word){
+        //getEditBox(onLine).setVisibility(View.VISIBLE);
+        String text = getEditBox(onLine).getText().toString();
+        if (text.length() == 5 && wordsList.contains(text)) {
             char c;
             TextView getChar;
-            for (int i = 0; i < 5; i++) {
-                c = text.charAt(i);
-                getChar = getChar(i);
+            int rightCount = 0;
+            for (int charNum = 0; charNum < 5; charNum++) {
+                c = text.charAt(charNum);
+                getChar = getChar(onLine, charNum);
                 getChar.setText("" + c);
-                if (c == word.charAt(i)) getChar.setTextColor(Color.GREEN);
+                if (c == word.charAt(charNum)){
+                    getChar.setTextColor(Color.GREEN);
+                    rightCount++;
+                }
                 else if (word.contains("" + c)) getChar.setTextColor(Color.YELLOW);
                 else getChar.setTextColor(Color.RED);
                 getChar.setVisibility(View.VISIBLE);
             }
-            editBox.setVisibility(View.INVISIBLE);
-        } else Toast.makeText(this, "invalid word", Toast.LENGTH_LONG).show();
+            getEditBox(onLine).setVisibility(View.INVISIBLE);
+            getEditBox(onLine+1).setVisibility(View.VISIBLE);
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     @Override
     public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
         switch (actionId){
-            case EditorInfo.IME_ACTION_DONE:
-                checkWord(getRandomWord());
-                break;
+            case EditorInfo.IME_ACTION_NEXT:
+                if(isValid(word) && onLine != 5) onLine++;
+                else{
+                    Toast toast = Toast.makeText(this, "invalid word", Toast.LENGTH_LONG);
+                    toast.setGravity(Gravity.TOP, 50, 420);
 
+                    TextView tv = new TextView(this);
+                    tv.setBackgroundColor(Color.WHITE);
+                    Typeface t = Typeface.create("serif", Typeface.BOLD_ITALIC);
+                    tv.setTypeface(t);
+                    tv.setTextSize(25);
+                    tv.setText("INVALID WORD");
+                    tv.setPadding(5, 5, 5, 5);
+                    toast.setView(tv);
+                    toast.show();
+                }
+                if(onLine == 5) editBox5.setVisibility(View.INVISIBLE);
+                break;
             default:
                 break;
         }

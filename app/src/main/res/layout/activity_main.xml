@@ -20,16 +20,16 @@
         />
 
     <EditText
-        android:layout_width="338dp"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="150dp"
         android:layout_centerHorizontal="true"
         android:background="@drawable/edit_text_background"
-        android:hint="@string/border_text_field"
+        android:hint="Guess Word"
         android:inputType="text"
-        android:imeOptions="actionDone"
-        android:imeActionLabel="@string/border_text_field"
+        android:imeOptions="actionNext"
         android:textSize="35dp"
+        android:textAlignment="center"
         android:id="@+id/editBox"
         android:visibility="visible"
         />
@@ -95,6 +95,317 @@
         android:textAlignment="center"
         android:textColor="#00ff00"
         android:visibility="invisible" />
+
+    <EditText
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="250dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/edit_text_background"
+        android:hint="Guess Again!"
+        android:inputType="text"
+        android:imeOptions="actionNext"
+        android:textSize="35dp"
+        android:textAlignment="center"
+        android:id="@+id/editBox2"
+        android:visibility="invisible"
+        />
+
+    <TextView
+        android:id="@+id/firstChar2"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="250dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="80dp"
+        android:text="G"
+        android:textSize="45dp"
+        android:textAlignment="center"
+        android:textColor="#00ff00"
+        android:visibility="invisible"
+        />
+
+    <TextView
+        android:id="@+id/secondChar2"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="250dp"
+        android:layout_toRightOf="@id/firstChar2"
+        android:text="G"
+        android:textSize="45dp"
+        android:textAlignment="center"
+        android:textColor="#00ff00"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/thirdChar2"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/secondChar2"
+        android:layout_marginTop="250dp"
+        android:text="G"
+        android:textSize="45dp"
+        android:textAlignment="center"
+        android:textColor="#00ff00"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/fourthChar2"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/thirdChar2"
+        android:layout_marginTop="250dp"
+        android:text="G"
+        android:textSize="45dp"
+        android:textAlignment="center"
+        android:textColor="#00ff00"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/fifthChar2"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/fourthChar"
+        android:layout_marginTop="250dp"
+        android:text="G"
+        android:textSize="45dp"
+        android:textAlignment="center"
+        android:textColor="#00ff00"
+        android:visibility="invisible" />
+
+    <EditText
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="350dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/edit_text_background"
+        android:hint="Guess Again!"
+        android:inputType="text"
+        android:imeOptions="actionNext"
+        android:textSize="35dp"
+        android:textAlignment="center"
+        android:id="@+id/editBox3"
+        android:visibility="invisible"
+        />
+
+    <TextView
+        android:id="@+id/firstChar3"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="350dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="80dp"
+        android:text="G"
+        android:textSize="45dp"
+        android:textAlignment="center"
+        android:textColor="#00ff00"
+        android:visibility="invisible"
+        />
+
+    <TextView
+        android:id="@+id/secondChar3"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="350dp"
+        android:layout_toRightOf="@id/firstChar2"
+        android:text="G"
+        android:textSize="45dp"
+        android:textAlignment="center"
+        android:textColor="#00ff00"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/thirdChar3"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/secondChar2"
+        android:layout_marginTop="350dp"
+        android:text="G"
+        android:textSize="45dp"
+        android:textAlignment="center"
+        android:textColor="#00ff00"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/fourthChar3"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/thirdChar2"
+        android:layout_marginTop="350dp"
+        android:text="G"
+        android:textSize="45dp"
+        android:textAlignment="center"
+        android:textColor="#00ff00"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/fifthChar3"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/fourthChar"
+        android:layout_marginTop="350dp"
+        android:text="G"
+        android:textSize="45dp"
+        android:textAlignment="center"
+        android:textColor="#00ff00"
+        android:visibility="invisible" />
+
+
+    <EditText
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="450dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/edit_text_background"
+        android:hint="Guess Again!"
+        android:inputType="text"
+        android:imeOptions="actionNext"
+        android:textSize="35dp"
+        android:textAlignment="center"
+        android:id="@+id/editBox4"
+        android:visibility="invisible"
+        />
+
+    <TextView
+        android:id="@+id/firstChar4"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="450dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="80dp"
+        android:text="G"
+        android:textSize="45dp"
+        android:textAlignment="center"
+        android:textColor="#00ff00"
+        android:visibility="invisible"
+        />
+
+    <TextView
+        android:id="@+id/secondChar4"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="450dp"
+        android:layout_toRightOf="@id/firstChar2"
+        android:text="G"
+        android:textSize="45dp"
+        android:textAlignment="center"
+        android:textColor="#00ff00"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/thirdChar4"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/secondChar2"
+        android:layout_marginTop="450dp"
+        android:text="G"
+        android:textSize="45dp"
+        android:textAlignment="center"
+        android:textColor="#00ff00"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/fourthChar4"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/thirdChar2"
+        android:layout_marginTop="450dp"
+        android:text="G"
+        android:textSize="45dp"
+        android:textAlignment="center"
+        android:textColor="#00ff00"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/fifthChar4"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/fourthChar"
+        android:layout_marginTop="450dp"
+        android:text="G"
+        android:textSize="45dp"
+        android:textAlignment="center"
+        android:textColor="#00ff00"
+        android:visibility="invisible" />
+
+
+    <EditText
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="550dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/edit_text_background"
+        android:hint="Guess Again!"
+        android:inputType="text"
+        android:imeOptions="actionNext"
+        android:textSize="35dp"
+        android:textAlignment="center"
+        android:id="@+id/editBox5"
+        android:visibility="invisible"
+        />
+
+    <TextView
+        android:id="@+id/firstChar5"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="550dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="80dp"
+        android:text="G"
+        android:textSize="45dp"
+        android:textAlignment="center"
+        android:textColor="#00ff00"
+        android:visibility="invisible"
+        />
+
+    <TextView
+        android:id="@+id/secondChar5"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="550dp"
+        android:layout_toRightOf="@id/firstChar2"
+        android:text="G"
+        android:textSize="45dp"
+        android:textAlignment="center"
+        android:textColor="#00ff00"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/thirdChar5"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/secondChar2"
+        android:layout_marginTop="550dp"
+        android:text="G"
+        android:textSize="45dp"
+        android:textAlignment="center"
+        android:textColor="#00ff00"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/fourthChar5"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/thirdChar2"
+        android:layout_marginTop="550dp"
+        android:text="G"
+        android:textSize="45dp"
+        android:textAlignment="center"
+        android:textColor="#00ff00"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/fifthChar5"
+        android:layout_width="45dp"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/fourthChar"
+        android:layout_marginTop="550dp"
+        android:text="G"
+        android:textSize="45dp"
+        android:textAlignment="center"
+        android:textColor="#00ff00"
+        android:visibility="invisible" />
+
 
 
 </RelativeLayout>
