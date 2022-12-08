@@ -225,7 +225,7 @@ public class MainActivity extends AppCompatActivity implements TextView.OnEditor
     public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
         switch (actionId){
             case EditorInfo.IME_ACTION_DONE:
-                if(isValid("about") && onLine != 5 && rightCount != 5) {
+                if(isValid(word) && onLine != 5 && rightCount != 5) {
                     onLine++;
                     tries--;
                     triesLeft.setText(triesLeft.getText().toString().substring(0, triesLeft.getText().length()-1) + tries);
