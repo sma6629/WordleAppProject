@@ -298,7 +298,9 @@ public class MainActivity extends AppCompatActivity implements TextView.OnEditor
                     }
                 }
                 getEditBox(0).setVisibility(View.VISIBLE);
-                getEditBox(0).setText("");
+                for(int i = 0; i < 5; i++){
+                    getEditBox(i).setText("");
+                }
                 word = getRandomWord();
                 break;
 
