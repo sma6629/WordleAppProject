@@ -3,6 +3,7 @@ package com.example.someapp;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -32,7 +34,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-public class MainActivity extends AppCompatActivity implements TextView.OnEditorActionListener {
+public class MainActivity extends AppCompatActivity implements TextView.OnEditorActionListener, View.OnClickListener {
 
     private EditText editBox;
     private TextView firstChar;
@@ -69,16 +71,17 @@ public class MainActivity extends AppCompatActivity implements TextView.OnEditor
     private TextView fourthChar5;
     private TextView fifthChar5;
 
-    static List<String> wordsList = new ArrayList<>(
-    List.of("aback", "abase", "abate", "abbey", "abbot", "abhor",
-            "abide", "abled", "abode", "abort", "about", "above",
-            "abuse", "abyss",
-            "acorn", "acrid", "actor", "acute",
-            "adage", "adapt", "adept", "admin", "admit", "adobe", "adopt", "adore"));
+    private TextView triesLeft;
+
+    static List<String> wordsList = Words.validWords;
 
     static String word;
     static int onLine;
-    static final int LAST_LINE = 2;
+    static int rightCount;
+    static int tries;
+    static final String INVALID = "Invalid Word";
+    static final String WON = "You Won";
+    static final String LOST = "You Lost";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +90,8 @@ public class MainActivity extends AppCompatActivity implements TextView.OnEditor
 
         word = getRandomWord();
         onLine = 0;
+        tries = 5;
+        triesLeft = findViewById(R.id.tries);
 
         editBox = findViewById(R.id.editBox);
         editBox.setOnEditorActionListener(this);
@@ -132,6 +137,9 @@ public class MainActivity extends AppCompatActivity implements TextView.OnEditor
         thirdChar5 = findViewById(R.id.thirdChar5);
         fourthChar5 = findViewById(R.id.fourthChar5);
         fifthChar5 = findViewById(R.id.fifthChar5);
+
+        Button button = findViewById(R.id.button);
+        button.setOnClickListener(this);
     }
 
     public static String getRandomWord(){
@@ -187,12 +195,11 @@ public class MainActivity extends AppCompatActivity implements TextView.OnEditor
     }
 
     public boolean isValid(String word){
-        //getEditBox(onLine).setVisibility(View.VISIBLE);
-        String text = getEditBox(onLine).getText().toString();
+        String text = getEditBox(onLine).getText().toString().toLowerCase();
         if (text.length() == 5 && wordsList.contains(text)) {
             char c;
             TextView getChar;
-            int rightCount = 0;
+            rightCount = 0;
             for (int charNum = 0; charNum < 5; charNum++) {
                 c = text.charAt(charNum);
                 getChar = getChar(onLine, charNum);
@@ -217,28 +224,86 @@ public class MainActivity extends AppCompatActivity implements TextView.OnEditor
     @Override
     public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
         switch (actionId){
-            case EditorInfo.IME_ACTION_NEXT:
-                if(isValid(word) && onLine != 5) onLine++;
-                else{
-                    Toast toast = Toast.makeText(this, "invalid word", Toast.LENGTH_LONG);
-                    toast.setGravity(Gravity.TOP, 50, 420);
-
-                    TextView tv = new TextView(this);
-                    tv.setBackgroundColor(Color.WHITE);
-                    Typeface t = Typeface.create("serif", Typeface.BOLD_ITALIC);
-                    tv.setTypeface(t);
-                    tv.setTextSize(25);
-                    tv.setText("INVALID WORD");
-                    tv.setPadding(5, 5, 5, 5);
-                    toast.setView(tv);
-                    toast.show();
+            case EditorInfo.IME_ACTION_DONE:
+                if(isValid("about") && onLine != 5 && rightCount != 5) {
+                    onLine++;
+                    tries--;
+                    triesLeft.setText(triesLeft.getText().toString().substring(0, triesLeft.getText().length()-1) + tries);
                 }
-                if(onLine == 5) editBox5.setVisibility(View.INVISIBLE);
+
+                else if(rightCount == 5){
+                    getEditBox(onLine+1).setVisibility(View.INVISIBLE);
+                    displayMessage(WON);
+                    closeKeyboard();
+                }
+
+                else{
+                    displayMessage(INVALID);
+                }
+
+                if(onLine == 5) {
+                    editBox5.setVisibility(View.INVISIBLE);
+                    closeKeyboard();
+                }
+
+                if(tries == 0 && rightCount != 5){
+                    displayMessage(LOST);
+                    closeKeyboard();
+                }
                 break;
             default:
                 break;
         }
 
         return true;
+    }
+
+    public void displayMessage(String message){
+        Toast toast = Toast.makeText(this, message, Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.TOP, 50, 420);
+
+        TextView tv = new TextView(this);
+        if(message.equalsIgnoreCase(INVALID) || message.equalsIgnoreCase(LOST)) tv.setBackgroundColor(Color.RED);
+        else tv.setBackgroundColor(Color.GREEN);
+        Typeface t = Typeface.create("serif", Typeface.BOLD_ITALIC);
+        tv.setTypeface(t);
+        tv.setTextSize(25);
+        tv.setText(message);
+        tv.setPadding(5, 5, 5, 5);
+        toast.setView(tv);
+        toast.show();
+    }
+
+    public void closeKeyboard(){
+        View view = this.getCurrentFocus();
+        if(view != null) {
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.button:
+                onLine = 0;
+                tries = 5;
+                triesLeft.setText(triesLeft.getText().toString().substring(0, triesLeft.getText().length()-1) + tries);
+                for(int i = 1; i < 5; i++){
+                    getEditBox(i).setVisibility(View.INVISIBLE);
+
+                    for(int j = 0; j < 5; j++){
+                        getChar(0, j).setVisibility(View.INVISIBLE);
+                        getChar(i, j).setVisibility(View.INVISIBLE);
+                    }
+                }
+                getEditBox(0).setVisibility(View.VISIBLE);
+                getEditBox(0).setText("");
+                word = getRandomWord();
+                break;
+
+            default:
+                break;
+        }
     }
 }
