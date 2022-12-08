@@ -301,6 +301,7 @@ public class MainActivity extends AppCompatActivity implements TextView.OnEditor
                 for(int i = 0; i < 5; i++){
                     getEditBox(i).setText("");
                 }
+
                 word = getRandomWord();
                 break;
 
