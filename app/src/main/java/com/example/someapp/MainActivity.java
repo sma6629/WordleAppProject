@@ -287,6 +287,7 @@ public class MainActivity extends AppCompatActivity implements TextView.OnEditor
         switch (view.getId()){
             case R.id.button:
                 onLine = 0;
+                rightCount = 0;
                 tries = 5;
                 triesLeft.setText(triesLeft.getText().toString().substring(0, triesLeft.getText().length()-1) + tries);
                 for(int i = 1; i < 5; i++){
@@ -301,7 +302,6 @@ public class MainActivity extends AppCompatActivity implements TextView.OnEditor
                 for(int i = 0; i < 5; i++){
                     getEditBox(i).setText("");
                 }
-
                 word = getRandomWord();
                 break;
 
